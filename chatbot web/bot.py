@@ -6,7 +6,14 @@ from llama_index.core.postprocessor import SimilarityPostprocessor
 from llama_index.core import StorageContext, load_index_from_storage
 import google.generativeai as genai
 import os
-from api import gapi
+if os.environ.get("RENDER") != "true":
+    from dotenv import load_dotenv
+    load_dotenv()
+
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+
+if not GEMINI_API_KEY:
+    raise ValueError("GEMINI_API_KEY environment variable is not set")
 
 Settings.llm = None
 Settings.embed_model = HuggingFaceEmbedding(model_name="BAAI/bge-small-en-v1.5")
@@ -29,7 +36,7 @@ query_engine = RetrieverQueryEngine(
     node_postprocessors=[SimilarityPostprocessor(similarity_cutoff=0.6)]
 )
 
-genai.configure(api_key=gapi)
+genai.configure(api_key=GEMINI_API_KEY)
 model = genai.GenerativeModel(model_name='gemini-1.5-flash')
 
 def query_rag_engine(comment: str) -> str:
