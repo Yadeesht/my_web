@@ -6,7 +6,7 @@ from llama_index.core.postprocessor import SimilarityPostprocessor
 from llama_index.core import StorageContext, load_index_from_storage
 import google.generativeai as genai
 import os
-if os.environ.get("RAILWAY") != "true":
+if os.environ.get("PRODUCTION") != "true":
     from dotenv import load_dotenv
     load_dotenv()
 
