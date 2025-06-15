@@ -43,6 +43,7 @@ greenlet
 griffe
 grpcio
 grpcio-status
+gunicorn
 h11
 httpcore
 httplib2
