@@ -1,4 +1,4 @@
-from llama_index.embeddings.huggingface import HuggingFaceEmbedding
+# from llama_index.embeddings.gemini import GeminiEmbedding
 from llama_index.core import Document, Settings, VectorStoreIndex, SimpleDirectoryReader
 from llama_index.core.retrievers import VectorIndexRetriever
 from llama_index.core.query_engine import RetrieverQueryEngine
@@ -15,8 +15,8 @@ GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 if not GEMINI_API_KEY:
     raise ValueError("GEMINI_API_KEY environment variable is not set")
 
-Settings.llm = None
-Settings.embed_model = HuggingFaceEmbedding(model_name="BAAI/bge-small-en-v1.5")
+# Settings.llm = None
+# Settings.embed_model = GeminiEmbedding()
 
 try:
     storage_context = StorageContext.from_defaults(persist_dir="index_store")

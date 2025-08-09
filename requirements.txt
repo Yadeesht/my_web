@@ -1,8 +1,5 @@
 fastapi
 uvicorn
-gunicorn
 python-dotenv
 google-generativeai
-llama-index
-llama-index-embeddings-huggingface
-sentence-transformers
+llama-index-core
