@@ -15,8 +15,8 @@ GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 if not GEMINI_API_KEY:
     raise ValueError("GEMINI_API_KEY environment variable is not set")
 
-# Settings.llm = None
-# Settings.embed_model = GeminiEmbedding()
+Settings.llm = None
+Settings.embed_model = GeminiEmbedding()
 
 try:
     storage_context = StorageContext.from_defaults(persist_dir="index_store")
