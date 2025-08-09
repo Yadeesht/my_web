@@ -1,4 +1,4 @@
-# from llama_index.embeddings.gemini import GeminiEmbedding
+from llama_index.embeddings.gemini import GeminiEmbedding
 from llama_index.core import Document, Settings, VectorStoreIndex, SimpleDirectoryReader
 from llama_index.core.retrievers import VectorIndexRetriever
 from llama_index.core.query_engine import RetrieverQueryEngine
