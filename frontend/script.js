@@ -265,7 +265,7 @@ function formatJarvisResponse(response) {
 // Get JARVIS response
 async function getJarvisResponse(message) {
     try {
-        const response = await fetch('https://my-web-cr8k.onrender.com/chat', {
+        const response = await fetch('/chat', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
