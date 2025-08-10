@@ -45,7 +45,6 @@ model = genai.GenerativeModel(model_name='gemini-1.5-flash')
 def query_rag_engine(comment: str) -> str:
     try:
         response = query_engine.query(comment)
-
         context = "Context:\n"
         for node in response.source_nodes:
             context += node.text + "\n\n"
