@@ -1,4 +1,5 @@
 from llama_index.embeddings.gemini import GeminiEmbedding
+# from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 from llama_index.core import Document, Settings, VectorStoreIndex, SimpleDirectoryReader
 from llama_index.core.retrievers import VectorIndexRetriever
 from llama_index.core.query_engine import RetrieverQueryEngine
@@ -17,7 +18,9 @@ if not GEMINI_API_KEY:
 
 Settings.llm = None
 Settings.embed_model = GeminiEmbedding()
-
+Settings.chunk_size = 512
+Settings.chunk_overlap = 128
+# Settings.embed_model = HuggingFaceEmbedding(model_name="BAAI/bge-small-en-v1.5")
 try:
     storage_context = StorageContext.from_defaults(persist_dir="index_store")
     index = load_index_from_storage(storage_context)
@@ -46,7 +49,6 @@ def query_rag_engine(comment: str) -> str:
         context = "Context:\n"
         for node in response.source_nodes:
             context += node.text + "\n\n"
-        
         if not context.strip():
             context = "No relevant data was found for this query from Yadeesh's portfolio.\n\n"
 
@@ -75,6 +77,5 @@ def query_rag_engine(comment: str) -> str:
         return f"Error processing query: {str(e)}"
 
 
-
-
-
+if __name__ == "__main__":
+    print(query_rag_engine("Hello, tell about yadeesh project?"))

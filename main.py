@@ -28,7 +28,6 @@ async def handle_chat(request: Request):
         
         # Get response from RAG engine
         response = query_rag_engine(user_message)
-        
         return JSONResponse(
             content={
                 "response": response

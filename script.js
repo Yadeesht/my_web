@@ -253,23 +253,27 @@ function formatJarvisResponse(response) {
     // Split the response into lines
     const lines = response.split('\n');
     let formattedResponse = '';
-    
-    // Process each line
+    let lastWasBullet = false;
+
     lines.forEach(line => {
-        // If line starts with "-", keep it as is with a line break
         if (line.trim().startsWith('-')) {
+            if (lastWasBullet) {
+                formattedResponse += '<br>';
+            }
             formattedResponse += line + '<br>';
-        }
-        // If line contains "JARVIS:", add line break before it and make it bold
-        else if (line.includes('JARVIS:')) {
+            lastWasBullet = true;
+        } else if (line.includes('JARVIS:')) {
             formattedResponse += '<br><strong>' + line + '</strong>';
-        }
-        // Otherwise, add the line as is with a line break
-        else {
+            lastWasBullet = false;
+        } else if (line.trim() === '') {
+            formattedResponse += '<br>';
+            lastWasBullet = false;
+        } else {
             formattedResponse += line + '<br>';
+            lastWasBullet = false;
         }
     });
-    
+
     return formattedResponse;
 }
 
