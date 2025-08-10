@@ -197,27 +197,11 @@ function updateParticlesColor() {
         interactivity: {
             detect_on: "canvas",
             events: {
-                onhover: {
-                    enable: true,
-                    mode: "grab"
-                },
-                onclick: {
-                    enable: true,
-                    mode: "push"
-                },
+                onhover: { enable: false },
+                onclick: { enable: false },
                 resize: true
             },
-            modes: {
-                grab: {
-                    distance: 200,
-                    line_linked: {
-                        enable:false
-                    }
-                },
-                push: {
-                    particles_nb: 6
-                }
-            }
+            modes: {}
         },
         retina_detect: true
     });
@@ -227,6 +211,7 @@ function updateParticlesColor() {
     style.textContent = `
         #particles-js canvas {
             filter: drop-shadow(0 0 10px ${colors[0]}80);
+            pointer-events: none; /* disable all pointer interactions */
         }
         .particle {
             box-shadow: 0 0 20px ${colors[0]}cc;
