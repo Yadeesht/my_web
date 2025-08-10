@@ -26,7 +26,6 @@ async def handle_chat(request: Request):
                 content={"error": "Message is required"}
             )
         
-        # Get response from RAG engine
         response = query_rag_engine(user_message)
         return JSONResponse(
             content={
