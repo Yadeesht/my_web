@@ -564,11 +564,6 @@ footer {
     display: block;
 }
 
-/* .minimize-btn:hover {
-    transform: scale(1.1);
-    color: #D1FBFC;
-} */
-
 .chat-messages {
     flex: 1;
     padding: 25px;
